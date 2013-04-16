@@ -1,21 +1,29 @@
+import java.util.Scanner;
 
 public class Pasapalabra {
 	
-//no hace falta:	private Rosco miRosco;
 	private static Pasapalabra miPasapalabra = new Pasapalabra();
-	private static Rosco miRosco;
-	
+
 	private Pasapalabra(){
-	miRosco = null; 
 }
 	
 	public static Pasapalabra getMiPasapalabra(){
 		return miPasapalabra;
 	}
 	
-	public void empezarPartida(){
-		Rosco miRosco = null;
-		miRosco = AlmacenPreguntas.dameUnRosco();
+	public static void empezarPartida(){
+
+		Scanner sc = new Scanner(System.in);
+		boolean salir = false;
+
+		while (salir == false){
+		Rosco miRosco = AlmacenPreguntas.dameUnRosco();
 		miRosco.empezarPartida();
+		System.out.println("Quieres volver a jugar? (si/no)");
+		if(sc.next().equals("no"))
+		{
+			salir = true;
+		}
+		}
 	}
 }

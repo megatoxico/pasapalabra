@@ -11,8 +11,13 @@ public class PruebaPasapalabra {
 		miListaPreguntas.anadirPregunta(pregunta3);
 		Rosco miRosco = new Rosco(miListaPreguntas);
 		*/
+		
+		/*
 		Rosco miRosco= AlmacenPreguntas.dameUnRosco();
 		miRosco.empezarPartida();
+		*/
+		
+		Pasapalabra.empezarPartida();
 	}
 
 }

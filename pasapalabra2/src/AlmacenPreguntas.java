@@ -4,7 +4,6 @@ import java.io.*;
 public class AlmacenPreguntas {
 
 private static AlmacenPreguntas miAlmacen = new AlmacenPreguntas();
-private static Random aleatorio = new Random();
 private static int[] cuantasPreguntas;
 //private static String letras = "abcdefghijklmnñopqrstuvxyz";
 
@@ -96,7 +95,6 @@ private static int getCuantasPreguntas(int pIndice)
 		//pasamos a la siguiente letra
 		indice++;
 	}
-
 	br.close();   
 	}
 	catch(IOException e){
@@ -105,11 +103,9 @@ private static int getCuantasPreguntas(int pIndice)
 return laLista;
 }
 
-
 private static int aleatorio(int pMax){
+	Random aleatorio = new Random();
 	return aleatorio.nextInt(pMax)+1;
 }
 
 }	
-
-
