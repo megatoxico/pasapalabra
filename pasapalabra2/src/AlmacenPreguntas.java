@@ -90,7 +90,7 @@ private static boolean getDatosCargados()
 			indice=0;
 			int seleccionada;
 			
-			//ATENCION CAMBIAR A ACCESO RANDOM ES IMPORTANTE!!!
+			//ATENCION CAMBIAR A ACCESO RANDOM
 			
 			while ((line=br.readLine()) != null) {
 				seleccionada = aleatorio(getCuantasPreguntas(indice));
