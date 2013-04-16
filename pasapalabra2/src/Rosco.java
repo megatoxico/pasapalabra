@@ -53,14 +53,15 @@ public class Rosco {
 		this.tiempoRestante = pTiempo;
 	}
 	
-	public void empezarPartida(){
-	
+	public void empezarPartida()
+	{
 	System.out.println("Comenzamos!!!");
 	Scanner sc = new Scanner(System.in);
 	String textoTecleado;
 	Pregunta laPregunta = null;
 	
-	while (this.getLista().quedanPreguntas() && getTiempoRestante()>0){
+	while (this.getLista().quedanPreguntas() && getTiempoRestante()>0)
+	{
 		laPregunta = this.getLista().sacarPregunta();
 		{
 		laPregunta.imprimir();
@@ -104,20 +105,19 @@ public class Rosco {
 								}
 					}	
 			}
-	
 	}
 	//Fin del Rosco por tiempo o falta de preguntas.
 	//el recuento se podria haber metido recuento en un metodo
 	System.out.println("Puntuacion FINAL: Aciertos= "+this.getAciertos()+" Fallos= "+this.getFallos());
 	if (getTiempoRestante()>0)
 	{
-	System.out.println("Te han sobrado: "+this.getTiempoRestante()/1000+" segundos.");
+		System.out.println("Te han sobrado: "+this.getTiempoRestante()/1000+" segundos.");
 	}
 	else
 	{
 		System.out.println("Se te agotó el tiempo.!!!");
 	}
 	
-	}
+}
 	
 }
