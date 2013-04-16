@@ -6,14 +6,24 @@ public class Pregunta {
 	char	letra;
 	
 	public Pregunta(char pLetra, String pTexto, String pRespuesta){
-		this.respuesta = pRespuesta;
+		this.respuesta = filtrar(pRespuesta);
 		this.texto = pTexto;
 		this.letra = pLetra;
 	}
+	private String filtrar(String pTexto)
+	{
+		String tuString = pTexto.toLowerCase();
+		tuString = tuString.replace ('á','a');
+		tuString = tuString.replace ('é','e');
+		tuString = tuString.replace ('í','i');
+		tuString = tuString.replace ('ó','o');
+		tuString = tuString.replace ('ú','u');
+		return tuString;
+	}
 	
 	public boolean esCorrecta(String pRespuestaTecleada){
-		//estaria bien filtrar acentos o simbolos...
-		return (this.respuesta.equals(pRespuestaTecleada.toLowerCase()));
+		String respuestaTecleada = filtrar(pRespuestaTecleada);
+		return (this.respuesta.equals(respuestaTecleada));
 	}
 	
 	public String getRespuesta(){

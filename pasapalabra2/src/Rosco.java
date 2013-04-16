@@ -80,58 +80,66 @@ public class Rosco {
 	System.out.println("Comenzamos!!!");
 	Scanner sc = new Scanner(System.in);
 	String textoTecleado;
+	Pregunta laPregunta = null;
 	
-	while (quedanPreguntas() && getTiempo()>0){
-		sacarPregunta();
+	while (this.getLista().quedanPreguntas() && getTiempo()>0){
+		laPregunta = this.getLista().sacarPregunta();
 		{
-		getLaPregunta().imprimir();
+		laPregunta.imprimir();
 		this.iniciarRelojInterno();
 		textoTecleado = sc.next();
 		this.setTiempo(this.getTiempo() - this.pararRelojInterno());
 		if (this.getTiempo()<0)
+		{
 			break;
-		if (textoTecleado.equals("p"))
-		{
-			System.out.println("Pasapalabra!!!");
-			this.pasarPregunta();
 		}
-		else if(haAcertado(textoTecleado))
-		{
-			System.out.println("Correcto");
-			this.sumarAcierto();
-		}
-			else
-		{
-			System.out.println("Nooooooo. La respuesta correcta era: "+getLaPregunta().getRespuesta());
-			this.sumarFallo();
-			System.out.println("Recuento: Aciertos= "+this.getAciertos()+" Fallos= "+this.getFallos());
-			if (tiempo>0)
+		else if (textoTecleado.equals("p"))
 			{
-			System.out.println("Te quedan "+this.getTiempo()/1000+" segundos.");
-			System.out.println("\nPulsa una tecla para continuar.\n");
-			try {
-				System.in.read(); // Lee del teclado
-				} catch (IOException e) {
-				}
+				System.out.println("Pasapalabra!!!");
+				this.getLista().anadirPregunta(laPregunta);
 			}
-			else
+			else if(laPregunta.esCorrecta(textoTecleado))
 			{
-				System.out.println("Se te agotó el tiempo.!!!");
+				System.out.println("Correcto");
+				this.sumarAcierto();
 			}
+				else
+					{
+						System.out.println("No. La respuesta correcta era: "+laPregunta.getRespuesta());
+						this.sumarFallo();
+						System.out.println("Recuento: Aciertos= "+this.getAciertos()+" Fallos= "+this.getFallos());
+							if (tiempo>0)
+								{
+									System.out.println("Te quedan "+this.getTiempo()/1000+" segundos.");
+									System.out.println("\nPulsa una tecla para continuar.\n");
+									try {
+										System.in.read(); // Lee del teclado
+										}
+									catch (IOException e) 
+									{
+										
+									}
+								}
+							else
+								{
+									System.out.println("Se te agotó el tiempo.!!!");
+								}
+					}	
 			}
-	}
 	
 	}
-	//se podria haber metido recuento en un metodo, pero creemos que al ser solo una linea no merece la pena
+	//Fin del Rosco por tiempo o falta de preguntas.
+	//el recuento se podria haber metido recuento en un metodo
 	System.out.println("Puntuacion FINAL: Aciertos= "+this.getAciertos()+" Fallos= "+this.getFallos());
 	if (getTiempo()>0)
 	{
-	System.out.println("Te han sobradop "+this.getTiempo()/1000+" segundos.");
+	System.out.println("Te han sobrado: "+this.getTiempo()/1000+" segundos.");
 	}
 	else
 	{
 		System.out.println("Se te agotó el tiempo.!!!");
 	}
+	
 	}
 	
 }
