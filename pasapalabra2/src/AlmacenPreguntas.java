@@ -5,7 +5,7 @@ public class AlmacenPreguntas {
 
 private static AlmacenPreguntas miAlmacen = new AlmacenPreguntas();
 private static int[] cuantasPreguntas;
-//private static String letras = "abcdefghijklmnñopqrstuvxyz";
+private static String nombreFicheroFuente;
 
 private AlmacenPreguntas() {
 }
@@ -15,6 +15,11 @@ public static AlmacenPreguntas getMiAlmacen(){
 }
 
 public static Rosco dameUnRosco(){
+	return dameUnRosco("preguntas.dat");
+}
+
+public static Rosco dameUnRosco(String pNombreFicheroFuente){
+	setNombreFicheroFuente(pNombreFicheroFuente);
 	if(cuantasPreguntas==null)
 	{
 	cuantasPreguntas= new int[26];
@@ -30,7 +35,7 @@ public static void contarPreguntas(){
 	int indice = 0;
 	int contador = 0;
 	try{
-		FileReader fr = new FileReader("preguntas.dat");
+		FileReader fr = new FileReader(getNombreFicheroFuente());
 		BufferedReader br = new BufferedReader(fr);
 		br.readLine();
 		//contamos el numero de preguntas de cada letra
@@ -62,50 +67,64 @@ private static int getCuantasPreguntas(int pIndice)
 	return cuantasPreguntas[pIndice];
 }
 
+private static void setNombreFicheroFuente(String pNombreFicheroFuente)
+{
+	nombreFicheroFuente = pNombreFicheroFuente;
+}
+
+private static String getNombreFicheroFuente()
+{
+	return nombreFicheroFuente;
+}
+
 	private static ListaPreguntas hacerUnRosco()
 	{
 		ListaPreguntas laLista = new ListaPreguntas();
 		Pregunta unaPregunta;
 		String line;
-		int indice = 0;
 		String letras = "abcdefghijklmnñopqrstuvxyz";
 		
 		try{
-			FileReader fr = new FileReader("preguntas.dat");
+			FileReader fr = new FileReader(getNombreFicheroFuente());
 			BufferedReader br = new BufferedReader(fr);
 			br.readLine();
-			indice=0;
 			int seleccionada;
+			int posAsterisco;
 			
-			//ATENCION CAMBIAR A ACCESO RANDOM --No merece la pena por debajo de 20.000 bytes
-			
-			while ((line=br.readLine()) != null) {
-				seleccionada = aleatorio(getCuantasPreguntas(indice));
-				for(int i=1;i<seleccionada;i+=1)
+			while ((line=br.readLine()) != null) 
+			{
+				for (int j=0;j<26;j++)
+				{
+					seleccionada = aleatorio(getCuantasPreguntas(j));
+				
+					for(int i=0;i<seleccionada;i+=1)
 					{
-					br.readLine();
+						line=br.readLine();
 					}
-		//creamos un objeto pregunta y lo añadimos a la lista de preguntas.
-		int posAsterisco = line.indexOf("*");
-		unaPregunta = new Pregunta(letras.charAt(indice),line.substring(0, posAsterisco),line.substring(posAsterisco+1));
-		laLista.anadirPregunta(unaPregunta);
-		//avanzamos hasta siguiente asterisco
-		while (br.readLine().charAt(0) !='*'){
+					
+					//creamos un objeto pregunta y lo añadimos a la lista de preguntas.
+					posAsterisco = line.indexOf("*");
+					unaPregunta = new Pregunta(letras.charAt(j),line.substring(0, posAsterisco),line.substring(posAsterisco+1));
+					laLista.anadirPregunta(unaPregunta);
+					//avanzamos hasta siguiente asterisco
+					while (br.readLine().charAt(0) !='*'){
+					}
+					//pasamos a la siguiente letra
+				}
+			}
+			br.close();   
 		}
-		//pasamos a la siguiente letra
-		indice++;
-	}
-	br.close();   
-	}
-	catch(IOException e){
-		System.out.println("Error con el fichero: "+e.getMessage());
-	}
-return laLista;
+		catch(IOException e)
+		{
+			System.out.println("Error con el fichero: "+e.getMessage());
+		}
+	return laLista;
 }
 
 private static int aleatorio(int pMax){
 	Random aleatorio = new Random();
-	return aleatorio.nextInt(pMax)+1;
+	int numero = aleatorio.nextInt(pMax) + 1;
+	return numero;
 }
 
 }	

@@ -16,23 +16,23 @@ public class Rosco {
 		this.tiempoRestante = 90000;
 	}
 
-	public void sumarAcierto(){
+	private void sumarAcierto(){
 		this.aciertos++;
 	}
 	
-	public void sumarFallo(){
+	private void sumarFallo(){
 		this.fallos++;
 	}
 
-	public int getAciertos(){
+	private int getAciertos(){
 		return this.aciertos;
 	}
 	
-	public int getFallos(){
+	private int getFallos(){
 		return this.fallos;
 	}
 	
-	public long getTiempoRestante(){
+	private long getTiempoRestante(){
 		return this.tiempoRestante;
 	}
 
@@ -48,7 +48,7 @@ public class Rosco {
 		return this.laLista;
 	}
 		
-	public void setTiempoRestante(long pTiempo)
+	private void setTiempoRestante(long pTiempo)
 	{
 		this.tiempoRestante = pTiempo;
 	}
