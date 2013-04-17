@@ -30,6 +30,9 @@ public class PreguntaTest {
 	@Test
 	public void testEsCorrecta() {
 		assertTrue(unaPregunta.esCorrecta("respuesta"));
+		assertTrue(unaPregunta.esCorrecta("Respuesta"));
+		assertTrue(unaPregunta.esCorrecta("rEspUesTa"));
+		assertTrue(unaPregunta.esCorrecta("réspúéstá"));
 		assertFalse(unaPregunta.esCorrecta("nada"));
 	}
 

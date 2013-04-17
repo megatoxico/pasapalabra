@@ -17,12 +17,13 @@ public class PasapalabraTest {
 
 	@Test
 	public void testGetMiPasapalabra() {
-		fail("Not yet implemented");
+		assertNotNull(Pasapalabra.getMiPasapalabra());
 	}
 
 	@Test
 	public void testEmpezarPartida() {
-		fail("Not yet implemented");
+		System.out.println("Verifica que te deja jugar otra partida cuando se acaba una.");
+		Pasapalabra.empezarPartida();
 	}
 
 }

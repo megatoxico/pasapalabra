@@ -35,7 +35,7 @@ public class RoscoTest {
 
 	@Test
 	public void testEmpezarPartida() {
-		fail("Not yet implemented");
+		//probado en AlmacenPreguntasTest
 	}
 
 }
