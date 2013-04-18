@@ -45,7 +45,7 @@ if (this.getLetra() == 'ñ' || this.getLetra() == 'q' || this.getLetra() == 'x' |
 }
 else
 {
-			System.out.println("Empieza con la "+this.letra+" :");
+			System.out.println("Empieza con la "+this.getLetra()+" :");
 }
 		System.out.println(this.getTexto());
 	}

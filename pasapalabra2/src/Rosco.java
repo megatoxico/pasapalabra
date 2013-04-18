@@ -40,7 +40,7 @@ public class Rosco {
 		relojInterno = System.currentTimeMillis();
 	}
 	
-	private long pararRelojInterno(){
+	private long cuantoTiempoHaPasado(){
 		return System.currentTimeMillis() - relojInterno;
 	}
 	
@@ -67,12 +67,12 @@ public class Rosco {
 		laPregunta.imprimir();
 		this.iniciarRelojInterno();
 		textoTecleado = sc.next();
-		this.setTiempoRestante(this.getTiempoRestante() - this.pararRelojInterno());
+		this.setTiempoRestante(this.getTiempoRestante() - this.cuantoTiempoHaPasado());
 		if (this.getTiempoRestante()<0)
 		{
 			break;
 		}
-		else if (textoTecleado.equals("p"))
+		else if (textoTecleado.equals("p") || textoTecleado.equals("P"))
 			{
 				System.out.println("Pasapalabra!!!");
 				this.getLista().anadirPregunta(laPregunta);
@@ -96,7 +96,7 @@ public class Rosco {
 										}
 									catch (IOException e) 
 									{
-										System.out.println("Error con el fichero al sacar preguntas: "+e.getMessage());
+										System.out.println("Error de teclado: "+e.getMessage());
 									}
 								}
 							else

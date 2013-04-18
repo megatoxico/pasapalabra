@@ -22,7 +22,7 @@ public class AlmacenPreguntasTest {
 
 	@Test
 	public void testDameUnRosco() {
-		assertNotNull(AlmacenPreguntas.dameUnRosco());
+		assertNotNull(AlmacenPreguntas.dameUnRosco("especial.dat"));
 		/*HAY QUE PROBAR:
 		 * que nos da un rosco de 26 preguntas.
 		 * que el orden de las preguntas es correcto

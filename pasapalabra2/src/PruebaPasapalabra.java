@@ -13,7 +13,7 @@ public class PruebaPasapalabra {
 		*/
 		
 		
-		Rosco miRosco= AlmacenPreguntas.dameUnRosco("especial.dat");
+		Rosco miRosco= AlmacenPreguntas.dameUnRosco();
 		miRosco.empezarPartida();
 		
 		

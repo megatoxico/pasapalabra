@@ -32,22 +32,24 @@ public static Rosco dameUnRosco(String pNombreFicheroFuente){
 
 public static void contarPreguntas(){
 	String line;
-	int indice = 0;
+	int indiceLetra = 0;
 	int contador = 0;
 	try{
 		FileReader fr = new FileReader(getNombreFicheroFuente());
 		BufferedReader br = new BufferedReader(fr);
-		br.readLine();
+		br.readLine(); //nos saltamos la primera linea que es *a
+		
 		//contamos el numero de preguntas de cada letra
-	while ((line=br.readLine()) != null) {     
-	if (line.charAt(0) == '*'){
-		setCuantasPreguntas(indice,contador);
-		contador = 0;
-		indice++;
+
+		while ((line=br.readLine()) != null) {     
+	if (line.charAt(0) != '*'){
+		contador++;
 	}
 	else
 	{
-		contador++;
+		setCuantasPreguntas(indiceLetra,contador);
+		contador = 0;
+		indiceLetra++;
 	}
 	}  
 	}
@@ -107,7 +109,8 @@ private static String getNombreFicheroFuente()
 					unaPregunta = new Pregunta(letras.charAt(j),line.substring(0, posAsterisco),line.substring(posAsterisco+1));
 					laLista.anadirPregunta(unaPregunta);
 					//avanzamos hasta siguiente asterisco
-					while (br.readLine().charAt(0) !='*'){
+					while (br.readLine().charAt(0) !='*')
+					{
 					}
 					//pasamos a la siguiente letra
 				}

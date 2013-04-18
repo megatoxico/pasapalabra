@@ -12,12 +12,13 @@ public class PreguntaTest {
 	@Before
 	public void setUp() throws Exception {
 		unaPregunta = new Pregunta('a',"texto","respuesta");
-		otraPregunta = new Pregunta('h',"hexto","hespuesta");
+		otraPregunta = new Pregunta('ñ',"texto","hespuesta");
 	}
 
 	@After
 	public void tearDown() throws Exception {
 		unaPregunta = null;
+		otraPregunta = null;
 	}
 
 	@Test
@@ -44,7 +45,7 @@ public class PreguntaTest {
 	@Test
 	public void testGetLetra() {
 		assertEquals(unaPregunta.getLetra(),'a');
-		assertEquals(otraPregunta.getLetra(),'h');
+		assertEquals(otraPregunta.getLetra(),'ñ');
 	}
 
 	@Test
@@ -54,6 +55,11 @@ public class PreguntaTest {
 				"texto\n" +
 				"\nY el programa escribe:\n");
 		unaPregunta.imprimir();
+		System.out.println("\n\nSe tiene que imprimir:\n" +
+				"Contiene la ñ :\n" +
+				"texto\n" +
+				"\nY el programa escribe:\n");
+		otraPregunta.imprimir();
 	}
 
 }
