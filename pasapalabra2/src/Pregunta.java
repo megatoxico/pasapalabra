@@ -38,7 +38,7 @@ public class Pregunta {
 		return this.letra;
 	}
 	
-	public void imprimir(){
+	public void imprimirTexto(){
 if (this.getLetra() == 'ñ' || this.getLetra() == 'q' || this.getLetra() == 'x' || this.getLetra() == 'y')
 {
 			System.out.println("Contiene la "+this.getLetra()+" :");

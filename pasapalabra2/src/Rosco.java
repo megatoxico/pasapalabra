@@ -6,7 +6,7 @@ public class Rosco {
 
 	private ListaPreguntas laLista;
 	private int fallos, aciertos;
-	private long relojInterno, tiempoRestante;
+	private long tiempoRestante;
 	
 	
 	public Rosco(ListaPreguntas pListaPreguntas){
@@ -35,22 +35,14 @@ public class Rosco {
 	private long getTiempoRestante(){
 		return this.tiempoRestante;
 	}
+	
+	private void setTiempoRestante(long pTiempoRestante)
+	{
+		this.tiempoRestante = pTiempoRestante;
+	}
 
-	private void iniciarRelojInterno(){
-		relojInterno = System.currentTimeMillis();
-	}
-	
-	private long cuantoTiempoHaPasado(){
-		return System.currentTimeMillis() - relojInterno;
-	}
-	
 	private ListaPreguntas getLista(){
 		return this.laLista;
-	}
-		
-	private void setTiempoRestante(long pTiempo)
-	{
-		this.tiempoRestante = pTiempo;
 	}
 	
 	public void empezarPartida()
@@ -59,15 +51,16 @@ public class Rosco {
 	Scanner sc = new Scanner(System.in);
 	String textoTecleado;
 	Pregunta laPregunta = null;
+	long relojInterno;
 	
 	while (this.getLista().quedanPreguntas() && getTiempoRestante()>0)
 	{
 		laPregunta = this.getLista().sacarPregunta();
 		{
-		laPregunta.imprimir();
-		this.iniciarRelojInterno();
+		laPregunta.imprimirTexto();
+		relojInterno = System.currentTimeMillis();
 		textoTecleado = sc.next();
-		this.setTiempoRestante(this.getTiempoRestante() - this.cuantoTiempoHaPasado());
+		this.setTiempoRestante(this.getTiempoRestante() - (System.currentTimeMillis() - relojInterno));
 		if (this.getTiempoRestante()<0)
 		{
 			break;

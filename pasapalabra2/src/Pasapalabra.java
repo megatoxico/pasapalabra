@@ -11,7 +11,7 @@ public class Pasapalabra {
 		return miPasapalabra;
 	}
 	
-	public static void empezarPartida(){
+	public static void jugar(){
 
 		Scanner sc = new Scanner(System.in);
 		boolean salir = false;
@@ -20,7 +20,7 @@ public class Pasapalabra {
 		Rosco miRosco = AlmacenPreguntas.dameUnRosco();
 		miRosco.empezarPartida();
 		System.out.println("Quieres volver a jugar? (si/no)");
-		if(sc.next().equals("no"))
+		if(sc.next().equals("no") || sc.next().equals("No") || sc.next().equals("NO"))
 		{
 			salir = true;
 		}
