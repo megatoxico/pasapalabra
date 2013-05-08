@@ -50,16 +50,16 @@ public class PreguntaTest {
 
 	@Test
 	public void testImprimir() {
-		System.out.println("Se tiene que imprimir:\n" +
-				"Empieza con la a :\n" +
+		System.out.println("Se tiene que imprimir:\n\n" +
+				"Empieza con la a : " +
 				"texto\n" +
 				"\nY el programa escribe:\n");
-		unaPregunta.imprimirTexto();
-		System.out.println("\n\nSe tiene que imprimir:\n" +
-				"Contiene la ñ :\n" +
+		System.out.println(unaPregunta.getTexto());
+		System.out.println("\n\nSe tiene que imprimir:\n\n" +
+				"Contiene la ñ : " +
 				"texto\n" +
 				"\nY el programa escribe:\n");
-		otraPregunta.imprimirTexto();
+		System.out.println(otraPregunta.getTexto());
 	}
 
 }
