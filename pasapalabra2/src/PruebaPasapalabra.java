@@ -12,12 +12,12 @@ public class PruebaPasapalabra {
 		Rosco miRosco = new Rosco(miListaPreguntas);
 		*/
 		
-		
+		/*
 		Rosco miRosco= AlmacenPreguntas.dameUnRosco();
 		miRosco.empezarPartida();
+		*/
 		
-		
-		//Pasapalabra.empezarPartida();
+		Pasapalabra.jugar();
 	}
 
 }

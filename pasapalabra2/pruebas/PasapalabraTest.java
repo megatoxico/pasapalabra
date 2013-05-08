@@ -23,7 +23,7 @@ public class PasapalabraTest {
 	@Test
 	public void testEmpezarPartida() {
 		System.out.println("Verifica que te deja jugar otra partida cuando se acaba una.");
-		Pasapalabra.empezarPartida();
+		Pasapalabra.jugar();
 	}
 
 }

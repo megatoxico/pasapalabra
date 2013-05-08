@@ -1,12 +1,19 @@
 import static org.junit.Assert.*;
 
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.FileReader;
+import java.io.PrintStream;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.omg.CORBA.portable.InputStream;
 
 
 public class AlmacenPreguntasTest {
-
+	
 	@Before
 	public void setUp() throws Exception {
 	}
@@ -22,13 +29,13 @@ public class AlmacenPreguntasTest {
 
 	@Test
 	public void testDameUnRosco() {
-		assertNotNull(AlmacenPreguntas.dameUnRosco("especial.dat"));
-		/*HAY QUE PROBAR:
-		 * que nos da un rosco de 26 preguntas.
-		 * que el orden de las preguntas es correcto
-		 * que cada pregunta tiene texto y respuesta.
-		 * que tiempo aciertos y fallos se actualiza correctamente.
-		 */
+		//creamos un rosco especial
+		Rosco elRosco = AlmacenPreguntas.dameUnRosco("especial.dat");
+		
+		//empezamos partida
+		elRosco.empezarPartida();
+		
+		
 		
 		//Comprobamos que el rosco tiene 26 preguntas
 		System.out.println("pulsando p para pasarpalabra, tienes que recorrer\n" +

@@ -54,12 +54,12 @@ public class PreguntaTest {
 				"Empieza con la a :\n" +
 				"texto\n" +
 				"\nY el programa escribe:\n");
-		unaPregunta.imprimir();
+		unaPregunta.imprimirTexto();
 		System.out.println("\n\nSe tiene que imprimir:\n" +
 				"Contiene la ñ :\n" +
 				"texto\n" +
 				"\nY el programa escribe:\n");
-		otraPregunta.imprimir();
+		otraPregunta.imprimirTexto();
 	}
 
 }

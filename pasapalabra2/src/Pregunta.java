@@ -30,25 +30,19 @@ public class Pregunta {
 		return this.respuesta;
 	}
 	
-	private String getTexto(){
-		return this.texto;
+	public String getTexto(){
+		if (this.getLetra() == 'ñ' || this.getLetra() == 'q' || this.getLetra() == 'x' || this.getLetra() == 'y')
+		{
+					return("Contiene la "+this.getLetra()+": "+ this.texto);
+		}
+		else
+		{
+					return("Empieza con la "+this.getLetra()+": "+ this.texto);
+		}
 	}
 	
 	public char getLetra(){
 		return this.letra;
-	}
-	
-	public void imprimirTexto(){
-if (this.getLetra() == 'ñ' || this.getLetra() == 'q' || this.getLetra() == 'x' || this.getLetra() == 'y')
-{
-			System.out.println("Contiene la "+this.getLetra()+" :");
-}
-else
-{
-			System.out.println("Empieza con la "+this.getLetra()+" :");
-}
-		System.out.println(this.getTexto());
-	}
-	
+	}	
 	
 }
