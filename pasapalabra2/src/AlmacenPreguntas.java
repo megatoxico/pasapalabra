@@ -4,8 +4,8 @@ import java.io.*;
 public class AlmacenPreguntas {
 
 private static AlmacenPreguntas miAlmacen = new AlmacenPreguntas();
-private static int[] cuantasPreguntas;
-private static String nombreFicheroFuente;
+private int[] cuantasPreguntas;
+private String nombreFicheroFuente;
 
 private AlmacenPreguntas() {
 }
@@ -14,11 +14,11 @@ public static AlmacenPreguntas getMiAlmacen(){
 	return miAlmacen;
 }
 
-public static Rosco dameUnRosco(){
+public Rosco dameUnRosco(){
 	return dameUnRosco("preguntas.dat");
 }
 
-public static Rosco dameUnRosco(String pNombreFicheroFuente){
+public Rosco dameUnRosco(String pNombreFicheroFuente){
 	setNombreFicheroFuente(pNombreFicheroFuente);
 	if(cuantasPreguntas==null)
 	{
@@ -30,7 +30,7 @@ public static Rosco dameUnRosco(String pNombreFicheroFuente){
 	return miRosco;
 }
 
-public static void contarPreguntas(){
+public void contarPreguntas(){
 	String line;
 	int indiceLetra = 0;
 	int contador = 0;
@@ -59,27 +59,27 @@ public static void contarPreguntas(){
 	}
 	}
 
-private static void setCuantasPreguntas(int pIndice, int pCuantas)
+private void setCuantasPreguntas(int pIndice, int pCuantas)
 {
 	cuantasPreguntas[pIndice] = pCuantas;
 }
 
-private static int getCuantasPreguntas(int pIndice)
+private int getCuantasPreguntas(int pIndice)
 {
 	return cuantasPreguntas[pIndice];
 }
 
-private static void setNombreFicheroFuente(String pNombreFicheroFuente)
+private void setNombreFicheroFuente(String pNombreFicheroFuente)
 {
 	nombreFicheroFuente = pNombreFicheroFuente;
 }
 
-private static String getNombreFicheroFuente()
+private String getNombreFicheroFuente()
 {
 	return nombreFicheroFuente;
 }
 
-	private static ListaPreguntas hacerUnRosco()
+	private ListaPreguntas hacerUnRosco()
 	{
 		ListaPreguntas laLista = new ListaPreguntas();
 		Pregunta unaPregunta;
@@ -124,7 +124,7 @@ private static String getNombreFicheroFuente()
 	return laLista;
 }
 
-private static int aleatorio(int pMax){
+private int aleatorio(int pMax){
 	Random aleatorio = new Random();
 	int numero = aleatorio.nextInt(pMax) + 1;
 	return numero;

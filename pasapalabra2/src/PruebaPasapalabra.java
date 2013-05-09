@@ -1,6 +1,8 @@
 
 public class PruebaPasapalabra {
 
+	private static Pasapalabra miPasapalabra;
+	
 	public static void main(String[] args) {
 		/*Pregunta pregunta1 = new Pregunta('a',"opcion en euskera","aukera");
 		Pregunta pregunta2 = new Pregunta('b',"barrio de bilbao","barakaldo");
@@ -16,8 +18,8 @@ public class PruebaPasapalabra {
 		Rosco miRosco= AlmacenPreguntas.dameUnRosco();
 		miRosco.empezarPartida();
 		*/
-		
-		Pasapalabra.jugar();
+		miPasapalabra = Pasapalabra.getMiPasapalabra();
+		miPasapalabra.jugar();
 	}
 
 }

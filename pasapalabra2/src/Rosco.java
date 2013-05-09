@@ -71,7 +71,7 @@ public class Rosco {
 	
 	public void empezarPartida()
 	{
-	System.out.println("Comenzamos!!!");
+	muestraResultados.println("Comenzamos!!!");
 	
 	//Scanner sc = new Scanner(System.in);
 	String textoTecleado;
@@ -102,7 +102,7 @@ public class Rosco {
 			}
 				else
 					{
-						muestraResultados.println("No. La respuesta correcta era: "+laPregunta.getRespuesta());
+						muestraResultados.println("No. La respuesta correcta era: "+laPregunta.getRespuesta()+"\n");
 						this.sumarFallo();
 						muestraResultados.println("Recuento: Aciertos= "+this.getAciertos()+" Fallos= "+this.getFallos());
 							if (tiempoRestante>0)

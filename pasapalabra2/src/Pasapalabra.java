@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Pasapalabra {
 	
 	private static Pasapalabra miPasapalabra = new Pasapalabra();
-
+	
 	private Pasapalabra(){
 }
 	
@@ -11,21 +11,54 @@ public class Pasapalabra {
 		return miPasapalabra;
 	}
 	
-	public static void jugar(){
+	   /** Sitio del que leer las líneas de entrada */
+    IfzScanner scanner = new IfzScanner() {
+        private final Scanner scanner = new Scanner(System.in);
+        public String nextLine() {
+            return scanner.nextLine();
+        }
+    };
 
-		Scanner sc = new Scanner(System.in);
+    // Implementacion de IfzMuestraResultados, que escribe en pantalla
+    IfzMuestraResultados muestraResultados = new IfzMuestraResultados() {
+        public void println(String textoPeticion) {
+            System.out.println(textoPeticion);
+        }
+    };
+	
+    /** Se le pasa por donde mostrar los resultados */
+    public void setIfzMuestraResultados(IfzMuestraResultados muestraResultados) {
+        this.muestraResultados = muestraResultados;
+    }
+
+    /** Se le pasa de dónde leer las entradas */
+    public void setIfzScanner(IfzScanner scanner) {
+        this.scanner = scanner;
+    }
+	
+	public void jugar(){
+
 		boolean salir = false;
 		String respuesta = null;
+		AlmacenPreguntas miAlmacenPreguntas = AlmacenPreguntas.getMiAlmacen();
 		
 		while (salir == false){
-		Rosco miRosco = AlmacenPreguntas.dameUnRosco();
+		Rosco miRosco = miAlmacenPreguntas.dameUnRosco();
 		miRosco.empezarPartida();
-		System.out.println("Quieres volver a jugar? (si/no)");
-		respuesta = sc.nextLine();
+		muestraResultados.println("Quieres volver a jugar? (si/no)");
+		try
+		{
+		respuesta = scanner.nextLine();
 		if(respuesta.equals("no") || respuesta.equals("No") || respuesta.equals("NO"))
 		{
-			salir = true;
+			throw new SalirJuegoExcepcion("quiere salir");
 		}
+		}
+		catch (SalirJuegoExcepcion e)
+		{
+			muestraResultados.println("Hasta pronto.");
+			System.exit(0);
 		}
 	}
+}
 }

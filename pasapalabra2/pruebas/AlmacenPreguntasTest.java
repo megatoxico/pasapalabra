@@ -1,25 +1,33 @@
 import static org.junit.Assert.*;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.FileReader;
-import java.io.PrintStream;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.portable.InputStream;
-
 
 public class AlmacenPreguntasTest {
 	
+    /** scanner específico para el test */
+    private MockScanner scanner;
+    /** MuestraResultados específico para el test */
+    private MockMuestraResultados muestraResultados;
+    private Rosco miRosco;
+    private static AlmacenPreguntas miAlmacenPreguntas;
+    
 	@Before
 	public void setUp() throws Exception {
+        scanner = new MockScanner();
+        muestraResultados = new MockMuestraResultados();
+        miAlmacenPreguntas = AlmacenPreguntas.getMiAlmacen();
+        miRosco = miAlmacenPreguntas.dameUnRosco("especial.dat");
+        miRosco.setIfzScanner(scanner);
+        miRosco.setIfzMuestraResultados(muestraResultados);
 	}
 
 	@After
 	public void tearDown() throws Exception {
+		miRosco = null;
+		scanner = null;
+		muestraResultados = null;
 	}
 
 	@Test
@@ -29,14 +37,8 @@ public class AlmacenPreguntasTest {
 
 	@Test
 	public void testDameUnRosco() {
-		//creamos un rosco especial
-		Rosco elRosco = AlmacenPreguntas.dameUnRosco("especial.dat");
-		
-		//empezamos partida
-		elRosco.empezarPartida();
-		
-		
-		
+/*PRUEBAS INICIALES SEMIAUTOMATICAS
+
 		//Comprobamos que el rosco tiene 26 preguntas
 		System.out.println("pulsando p para pasarpalabra, tienes que recorrer\n" +
 				"todas las letras del abecedario en orden, y tienen que ser 26.\n" +
@@ -48,6 +50,18 @@ public class AlmacenPreguntasTest {
 				"de los textos de las preguntas del 1 al 5 y que al acertar cuenta el acierto.\n");
 		Rosco miRosco = AlmacenPreguntas.dameUnRosco("especial.dat");
 		miRosco.empezarPartida();
+*/
+	
+		//PRUEBAS FINALES CON LOS INTERFACES DE SCANNER Y PRINTLN
+		
+        miRosco.empezarPartida();
+        // Se comprueba que se han leido las dos lineas del scanner
+        //assertEquals(4, scanner.getContador());
+        // Se comprueba que han salido tres lineas por pantalla
+        System.out.println(muestraResultados.getContador());
+        assertEquals(8, muestraResultados.getContador());
+		
+		
 		
 	}
 
