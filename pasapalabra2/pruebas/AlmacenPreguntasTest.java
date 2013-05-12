@@ -59,7 +59,7 @@ public class AlmacenPreguntasTest {
         //assertEquals(4, scanner.getContador());
         // Se comprueba que han salido tres lineas por pantalla
         System.out.println(muestraResultados.getContador());
-        assertEquals(8, muestraResultados.getContador());
+        assertEquals(63, muestraResultados.getContador());
 		
 		
 		

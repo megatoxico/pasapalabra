@@ -37,7 +37,8 @@ public class Pasapalabra {
     }
 	
 	public void jugar(){
-
+		Intro miIntro =new Intro();
+		miIntro.animar();
 		boolean salir = false;
 		String respuesta = null;
 		AlmacenPreguntas miAlmacenPreguntas = AlmacenPreguntas.getMiAlmacen();

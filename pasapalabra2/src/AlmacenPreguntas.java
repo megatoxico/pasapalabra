@@ -15,7 +15,7 @@ public static AlmacenPreguntas getMiAlmacen(){
 }
 
 public Rosco dameUnRosco(){
-	return dameUnRosco("preguntas.dat");
+	return dameUnRosco("preguntasbasico.dat");
 }
 
 public Rosco dameUnRosco(String pNombreFicheroFuente){

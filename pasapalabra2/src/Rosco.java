@@ -37,7 +37,7 @@ public class Rosco {
 		this.laLista = pListaPreguntas;
 		this.aciertos = 0;
 		this.fallos = 0;
-		this.tiempoRestante = 90000;
+		this.tiempoRestante = 200000;
 	}
 
 	private void sumarAcierto(){
@@ -70,10 +70,20 @@ public class Rosco {
 	}
 	
 	public void empezarPartida()
+	{//ESTO PRIMERO NO VA AL MOCK
+	System.out.println("Para pasar palabra basta con pulsar enter, o escribir p" +
+			"'p', o 'pasapalabra'\n");
+	System.out.println("Pulsa enter para comenzar una partida.\n");
+	//A PARTIR DE AQUI TODO PASA POR LOS MOCKS
+	try {
+		scanner.nextLine(); // Lee del teclado cualquier cosa
+		}
+	catch (Exception e) 
 	{
+		muestraResultados.println("Error de teclado: "+e.getMessage());
+	}
 	muestraResultados.println("Comenzamos!!!");
 	
-	//Scanner sc = new Scanner(System.in);
 	String textoTecleado;
 	Pregunta laPregunta = null;
 	long relojInterno;
@@ -108,7 +118,7 @@ public class Rosco {
 							if (tiempoRestante>0)
 								{
 									muestraResultados.println("Te quedan "+this.getTiempoRestante()/1000+" segundos.");
-									muestraResultados.println("\nPulsa una enter para continuar.\n");
+									muestraResultados.println("\nPulsa enter para continuar.\n");
 									try {
 										scanner.nextLine(); // Lee del teclado cualquier cosa
 										}
