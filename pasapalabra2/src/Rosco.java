@@ -37,7 +37,7 @@ public class Rosco {
 		this.laLista = pListaPreguntas;
 		this.aciertos = 0;
 		this.fallos = 0;
-		this.tiempoRestante = 200000;
+		this.tiempoRestante = 280000;
 	}
 
 	private void sumarAcierto(){
@@ -71,7 +71,7 @@ public class Rosco {
 	
 	public void empezarPartida()
 	{//ESTO PRIMERO NO VA AL MOCK
-	System.out.println("Para pasar palabra basta con pulsar enter, o escribir p" +
+	System.out.println("Para pasar palabra basta con pulsar enter, o escribir " +
 			"'p', o 'pasapalabra'\n");
 	System.out.println("Pulsa enter para comenzar una partida.\n");
 	//A PARTIR DE AQUI TODO PASA POR LOS MOCKS
@@ -100,7 +100,7 @@ public class Rosco {
 		{
 			break;
 		}
-		else if (textoTecleado.equals("p") || textoTecleado.equals("P") || textoTecleado.equals(""))
+		else if (textoTecleado.equals("p") || textoTecleado.equals("P") || textoTecleado.equals("") || textoTecleado.equals("pasapalabra"))
 			{
 				muestraResultados.println("Pasapalabra!!!");
 				this.getLista().anadirPregunta(laPregunta);
