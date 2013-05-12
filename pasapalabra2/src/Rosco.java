@@ -37,7 +37,7 @@ public class Rosco {
 		this.laLista = pListaPreguntas;
 		this.aciertos = 0;
 		this.fallos = 0;
-		this.tiempoRestante = 280000;
+		this.tiempoRestante = 240000;
 	}
 
 	private void sumarAcierto(){
