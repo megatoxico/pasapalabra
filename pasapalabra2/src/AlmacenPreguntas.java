@@ -105,7 +105,7 @@ private String getNombreFicheroFuente()
 					}
 					
 					//creamos un objeto pregunta y lo añadimos a la lista de preguntas.
-					if (line.contains("*")){
+					if (line !=null && line.contains("*")){
 					posAsterisco = line.indexOf("*");
 					unaPregunta = new Pregunta(letras.charAt(j),line.substring(0, posAsterisco),line.substring(posAsterisco+1));
 					laLista.anadirPregunta(unaPregunta);
