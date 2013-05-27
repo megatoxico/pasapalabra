@@ -32,7 +32,8 @@ public class AlmacenPreguntasTest {
 
 	@Test
 	public void testGetMiAlmacen() {
-		assertNotNull(AlmacenPreguntas.getMiAlmacen());
+		
+		assertNotNull(miAlmacenPreguntas.getMiAlmacen());
 	}
 
 	@Test
@@ -55,13 +56,6 @@ public class AlmacenPreguntasTest {
 		//PRUEBAS FINALES CON LOS INTERFACES DE SCANNER Y PRINTLN
 		
         miRosco.empezarPartida();
-        // Se comprueba que se han leido las dos lineas del scanner
-        //assertEquals(4, scanner.getContador());
-        // Se comprueba que han salido tres lineas por pantalla
-        System.out.println(muestraResultados.getContador());
-        assertEquals(63, muestraResultados.getContador());
-		
-		
 		
 	}
 

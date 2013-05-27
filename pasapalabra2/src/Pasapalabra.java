@@ -4,6 +4,9 @@ public class Pasapalabra {
 	
 	private static Pasapalabra miPasapalabra = new Pasapalabra();
 	
+	
+	
+	
 	private Pasapalabra(){
 }
 	
@@ -58,7 +61,8 @@ public class Pasapalabra {
 		catch (SalirJuegoExcepcion e)
 		{
 			muestraResultados.println("Hasta pronto.");
-			System.exit(0);
+			//System.exit(0);
+			return;
 		}
 	}
 }

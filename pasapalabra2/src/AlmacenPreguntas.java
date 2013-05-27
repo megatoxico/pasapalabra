@@ -89,7 +89,7 @@ private String getNombreFicheroFuente()
 		try{
 			FileReader fr = new FileReader(getNombreFicheroFuente());
 			BufferedReader br = new BufferedReader(fr);
-			br.readLine();
+			//br.readLine();
 			int seleccionada;
 			int posAsterisco;
 			
@@ -99,7 +99,7 @@ private String getNombreFicheroFuente()
 				{
 					seleccionada = aleatorio(getCuantasPreguntas(j));
 				
-					for(int i=0;i<seleccionada;i+=1)
+					for(int i=0;i<seleccionada;i++)
 					{
 						line=br.readLine();
 					}
@@ -110,10 +110,14 @@ private String getNombreFicheroFuente()
 					unaPregunta = new Pregunta(letras.charAt(j),line.substring(0, posAsterisco),line.substring(posAsterisco+1));
 					laLista.anadirPregunta(unaPregunta);
 					}
+					
+					
 					//avanzamos hasta siguiente asterisco
-					while (br.readLine().charAt(0) !='*')
-					{
+					do{
+						line = br.readLine();
 					}
+					while ( (line != null) && (line.charAt(0)!='*') ) ;
+						//avanzamos de linea
 					//pasamos a la siguiente letra
 				}
 			}
