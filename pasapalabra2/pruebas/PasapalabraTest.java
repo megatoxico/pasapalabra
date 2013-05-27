@@ -40,6 +40,7 @@ public class PasapalabraTest {
 		miPasapalabra = null;
 		scanner = null;
 		muestraResultados = null;
+		archivo=new File("preguntasbasico2.dat");
 		archivo.renameTo(new File("preguntasbasico.dat"));
 	}
 
