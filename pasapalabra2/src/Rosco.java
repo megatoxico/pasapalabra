@@ -1,5 +1,7 @@
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Rosco {
@@ -7,6 +9,7 @@ public class Rosco {
 	private ListaPreguntas laLista;
 	private int fallos, aciertos;
 	private long tiempoRestante;
+	private ArrayList<Long> tiempos = new ArrayList<Long>();
 	
     /** Sitio del que leer las líneas de entrada */
     IfzScanner scanner = new IfzScanner() {
@@ -69,6 +72,48 @@ public class Rosco {
 		return this.laLista;
 	}
 	
+	private int getMediaTiempos(){
+		Iterator<Long> itr = tiempos.iterator();
+		long tiempo = 0;
+		int contador = 0;
+		while (itr.hasNext())
+		{
+			tiempo = tiempo + itr.next();
+			contador++;
+		}
+		return (int)(tiempo/contador);
+	}
+	
+	private int getTiempoMayor(){
+		Iterator<Long> itr = tiempos.iterator();
+		long tiempo = 0;
+		long tiempoMayor = 0;
+		while(itr.hasNext())
+		{
+			tiempo = itr.next();
+			if (tiempo>tiempoMayor)
+			{
+				tiempoMayor = tiempo;
+			}
+		}
+		return (int)tiempoMayor;
+	}
+	
+	private int getTiempoMenor(){
+		Iterator<Long> itr = tiempos.iterator();
+		long tiempo = 9999999;
+		long tiempoMenor = 0;
+		while(itr.hasNext())
+		{
+			tiempo = itr.next();
+			if (tiempo<tiempoMenor)
+			{
+				tiempoMenor = tiempo;
+			}
+		}
+		return (int)tiempoMenor;
+	}
+	
 	public void empezarPartida()
 	{//ESTO PRIMERO NO VA AL MOCK
 	System.out.println("Para pasar palabra basta con pulsar enter, o escribir " +
@@ -95,6 +140,7 @@ public class Rosco {
 		muestraResultados.println(laPregunta.getTexto());
 		relojInterno = System.currentTimeMillis();
 		textoTecleado = scanner.nextLine();
+		tiempos.add(System.currentTimeMillis()-relojInterno);
 		this.setTiempoRestante(this.getTiempoRestante() - (System.currentTimeMillis() - relojInterno));
 		if (this.getTiempoRestante()<0)
 		{
@@ -137,6 +183,9 @@ public class Rosco {
 	//Fin del Rosco por tiempo o falta de preguntas.
 	//el recuento se podria haber metido recuento en un metodo
 	muestraResultados.println("Puntuacion FINAL: Aciertos= "+this.getAciertos()+" Fallos= "+this.getFallos());
+System.out.println("El tiempo medio de respuesta ha sido: "+(this.getMediaTiempos()/1000)+" segundos.");
+System.out.println("La vez que mas has tardado ha sido: "+(this.getTiempoMayor()/1000)+" segundos.");
+System.out.println("La vez que menos has tardado ha sido: "+(this.getTiempoMenor()/1000)+" segundos.");
 	if (getTiempoRestante()>0)
 	{
 		muestraResultados.println("Te han sobrado: "+this.getTiempoRestante()/1000+" segundos.");
